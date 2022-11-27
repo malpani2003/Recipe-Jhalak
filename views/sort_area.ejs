@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="style/nav.css">
+    <link rel="stylesheet" href="style/footer.css">
+    <link rel="stylesheet" href="style/sort_area.css">
+
+</head>
+<body>
+    <%- include("header.ejs") %>
+    <div class="container">
+    
+    
+        <h3 class="text-center my-4">Filter By Area</h3>
+        <h4 class="text-center"> Total <%= list.length %> found</h4>
+        <div class="row">
+       
+      <% list.forEach(element => { %>
+        <a href="area/<%=element.strArea%>" class="col-lg-3 col-md-4 Category">
+          <% let letter=(element.strArea).slice(0,2) %>
+            <img src=<%=`https://www.themealdb.com/images/icons/flags/big/64/${letter}.png`%> alt=" <%=element.strArea%> Flag">
+            <h2><%= element.strArea%></h2>
+            
+               
+
+          
+        </a>
+    
+    <% }); %>
+        </div>
+    </div>
+    <%- include("footer.ejs") %>
+
+</body>
+<script>
+    
+</script>
+</html>

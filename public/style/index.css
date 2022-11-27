@@ -1,0 +1,103 @@
+        
+        .background{
+            background-image: url("img/826939.webp");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            min-height: 100vh;
+            /* padding: 200px; */
+            padding-top: 0px;
+            border-bottom: 1px solid black;
+        }
+        .box{
+            /* text-align: center; */
+            padding: 20px;
+            /* background-color: white; */
+            width: 50%;
+            /* margin: auto; */
+            font-weight: bold;
+            margin-top: 100px;
+
+        }
+
+        .Category{
+            text-align: center;
+            border: 1px solid black;
+            margin: auto;
+            background-color: rgb(34, 34, 34);
+            margin-top: 20px;
+            color: white;
+            border-radius: 10px;
+            margin-left: 50px;
+            /* transition: 1s ease; */
+
+        }
+        .Category img{
+            width: 60%;
+            margin-top: 20px;
+        }
+        @media(max-width:768px) {
+            .Category{
+                max-width: 80%;
+                margin: auto;
+            margin-top: 20px;
+                
+            }
+            
+        }
+        @media(max-width:589px) {
+            .box{
+                width:68%;
+            }
+            
+        }
+        @media(max-width:350px) {
+            .box{
+                width:98%;
+            }
+            
+        }
+        .row a{
+            text-decoration: none;
+            color: white;
+        }
+        .row a:hover{
+            color: white;
+        }
+        
+        .newsletter{
+            background-color: antiquewhite;
+            border-radius: 10px;
+            /* border: 2px solid black; */
+            padding: 10px;
+            width:95%;
+            margin: auto;
+            margin-top: 80px;
+            filter:drop-shadow(3px 3px 3px black);
+            margin-bottom: 20px;
+
+        }
+        .newsletter h3{
+            text-align: center;
+            margin-top: 10px;
+        }
+        input[type="email"]{
+            border: 2px solid black;
+            /* margin-bottom: 20px; */
+            
+        }
+        input[type="submit"]{
+            background-color: white;
+            border: none;
+            font-size: larger;
+            font-weight: bold;
+        }
+        .filter_letter{
+            text-align: center;
+            margin-top: 20px;
+        }
+        .popular img{
+            width:25%;
+            border-radius: 100%;
+            border: 2px solid black;
+        }

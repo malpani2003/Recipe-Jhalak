@@ -1,0 +1,132 @@
+.movie_detail img {
+    width: 90%;
+    display: block;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    /* transition: 1s ease-out; */
+  }
+
+  /* .movie_detail img:hover{
+          width: 100%;
+      } */
+  .movie_detail a {
+    text-decoration: none;
+    font-weight: bold;
+    /* background-color: aqua; */
+
+  }
+
+  .movie_detail h1 {
+    font-size: 4rem;
+  }
+
+  .movie_detail span {
+    color: rgb(10, 8, 114);
+    font-weight: bolder;
+  }
+
+  .instuctions li {
+    color: rgb(10, 80, 46);
+    font-size: large;
+    margin-top: 6px;
+  }
+
+  .instuctions {
+    font-weight: bold;
+    margin-left: 30px;
+  }
+
+
+
+  .ingredient h6 {
+    font-weight: bold;
+    text-align: center;
+  }
+
+  .table {
+    margin: auto;
+    width: 75%;
+    margin-top: 20px;
+    border: 2px solid black;
+    height: auto;
+
+  }
+
+  .table tr {
+    font-weight: bold;
+    
+  }
+
+  .table tr:first-child {
+    background-color: black;
+    color: white;
+    text-align: center;
+    font-size: larger;
+  }
+
+  .ingredient img {
+    width: 15%;
+    display: block;
+    margin: auto;
+  }
+
+  @media(max-width:767px) {
+    .movie_detail {
+      text-align: center;
+    }
+
+    .instuctions {
+      margin-left: 5px;
+    }
+
+    .ingredient img {
+      width: 40%;
+      display: block;
+      margin: auto;
+    }
+
+    .table {
+      width: 95%;
+    }
+  }
+  .similar_category{
+    margin-top: 40px;
+  }
+
+  .meal {
+    margin: auto;
+    text-align: center;
+
+  }
+
+  .meal img {
+    margin-bottom: 10px;
+    width: 70%;
+    border-radius: 100%;
+    image-orientation: flip;
+    /* opacity: 0.7; */
+    margin-top: 20px;
+    border: 4px solid black;
+    filter: drop-shadow(2px 3px 3px black);
+  }
+
+  .meal a {
+    background-color: gold;
+    font-weight: bold;
+    padding-left: 25px;
+    padding-right: 25px;
+    border-radius: 30px;
+  }
+  .share_info{
+    width:85%;
+    margin: auto;
+    border: 3px solid black;
+    border-radius: 20px;
+    padding: 20px;
+    margin-top: 30px;
+  }
+  textarea{
+    resize: none;
+  }

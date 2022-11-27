@@ -1,0 +1,20 @@
+body{
+    text-align: center;
+}
+img{
+    width:30%;
+    margin: auto;
+}
+h5{
+    /* margin-bottom: 40px; */
+    font-size: 200%;
+
+}
+h1{
+    font-size: 350%;
+}
+@media(max-width:800px) {
+    img{
+        width: 100%;
+    }
+}
