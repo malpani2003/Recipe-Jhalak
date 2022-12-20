@@ -17,7 +17,8 @@
     
         <h2 class="text-center my-4">Recipe By Ingrediant</h2>
         <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Autem, ducimus nobis nisi voluptas explicabo eveniet provident obcaecati incidunt. Enim exercitationem vitae sequi impedit velit sed quam numquam quo voluptate architecto.</p>
-        <h4 class="text-center"> Total <%= list.length %> found</h4>
+        <h4 class="text-center"> Total Ingrediants <%= length %> Avialable</h4>
+        <h6 class="text-center">Total <%= list.length %> found on this page </h6>
         
         <form action="/ingrediants" method="get" class="d-flex filter_order">
             <select name="sort" id="sort" class="form-control">
@@ -33,7 +34,7 @@
       <% list.forEach(element => { %>
         <a href="Ingredient/<%=element.strIngredient%>" class="col-lg-3 col-md-4 col-sm-6 Category">
            <% let url=`https://www.themealdb.com/images/ingredients/${element.strIngredient}.png`%>
-            <img src=<%=url%> alt="<%=element.strIngredient%> Photo">
+            <img src=<%=url%> alt=" <%=element.strIngredient%> Photo">
          
             <h2><%= element.strIngredient%></h2>
             
@@ -47,6 +48,15 @@
     
     <% }); %>
         </div>
+        
+        <form action="/ingrediants" class="pagination">
+            <% let page=length/25 %> 
+            <% for(let i=0;i<=page;i++){ %>
+                  <input type="submit" value="<%=i+1%>" name="page">
+             <% } %>  
+
+        </form> 
+
     </div>
     <%- include("footer.ejs") %>
 
