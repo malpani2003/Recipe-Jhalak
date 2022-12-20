@@ -1,4 +1,4 @@
-const { rejects } = require('assert');
+const { rejects, fail } = require('assert');
 const express = require('express')
 const app = express();
 const https = require("https");
@@ -78,6 +78,7 @@ app.get('/', (req, res) => {
 app.post("/search_item", function (req, res) {
 
     let item = req.body.fsearch;
+    // let item=req.body.payload;
     console.log(item);
     let url = `https://www.themealdb.com/api/json/v1/1/search.php?s=${item}`;
     console.log(url);
@@ -125,6 +126,8 @@ app.get("/ingrediants", function (req, res) {
     // if (order == undefined) {
     //     order = "asc"
     // }
+    let limit=25;
+    let skip=(req.query.page-1)*25 || 0;
     let url = "https://www.themealdb.com/api/json/v1/1/list.php?i=list";
     https.get(url, function (response) {
         let finaldata = ""
@@ -167,8 +170,16 @@ app.get("/ingrediants", function (req, res) {
                 });
 
             }
-            // res.send(finaldata)
-            res.render("all_ingrediants", { list: finaldata });
+            // console.log(finaldata);
+            let len=finaldata.length;
+            console.log(len);
+            let displaylen=(skip+limit);
+            if((skip+limit)>len){
+                  displaylen=len;
+            }
+            // console.log();
+            // res.send()
+            res.render("all_ingrediants", { list: finaldata.slice(skip,displaylen),length:len });
         })
 
     });
@@ -284,7 +295,7 @@ app.get("/category/:category", function (req, res) {
 });
 function get_ingrediant(object) {
     return new Promise((resolve, reject) => {
-        console.log(object)
+        // console.log(object)
         let ingrediant_array = []
         for (i = 1; i <= 20; i++) {
             let ingrediant_name_id = `strIngredient${i}`;
@@ -311,12 +322,12 @@ function get_ingrediant(object) {
     });
 }
 
-function get_similar(category_search){
+function get_similar(category_search,area_search){
     return new Promise((resolve,reject)=>{
+        let finaldata = ""
         let url = `https://www.themealdb.com/api/json/v1/1/filter.php?c=${category_search}`;
         let similar_array=new Array
         https.get(url, function (response) {
-            let finaldata = ""
             response.on("data", function (data) {
                 finaldata += data.toString();
             });
@@ -324,12 +335,12 @@ function get_similar(category_search){
                 finaldata = JSON.parse(finaldata)
                 finaldata = finaldata.meals;
                 // console.log(finaldata)
-                // res.send(finaldata);
+
                 len=finaldata.length;
                 for (let index = 0; index < 4; index++) {
                     let item=finaldata[Math.floor(Math.random()*len)]
-                    console.log(item);
-                    console.log(similar_array);
+                    // console.log(item);
+                    // console.log(similar_array);
                     if(item in similar_array){
                         index=index-1;
                     }
@@ -343,12 +354,30 @@ function get_similar(category_search){
                 else{
                     reject(null);
                 }
+                
+                // res.send(finaldata);
                 // res.render("category_show", { list: finaldata, category: categorynm });
             })
     
         });
+        // let url2 = `www.themealdb.com/api/json/v1/1/filter.php?a=${area_search}`;
+        // https.get(url2, function (response2) {
+        //     response2.on("data", function (data2) {
+        //         finaldata += data2.toString();
+        //     });
+        //     response2.on("end", function () {
+        //         finaldata = JSON.parse(finaldata)
+        //         finaldata = finaldata.meals;
+        //         console.log(finaldata)
+        //         // res.send(finaldata);
+        //         // res.render("category_show", { list: finaldata, category: categorynm });
+        //     })
+    
+        // });
+        
     });
 }
+
 app.get("/meal/:id", function (req, res) {
     let meal_id = req.params.id;
     let url = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${meal_id}`
@@ -363,7 +392,7 @@ app.get("/meal/:id", function (req, res) {
             // res.send(finaldata);
             let ingrediant = await get_ingrediant(finaldata);
             // res.send(ingrediant);
-            let similar_food = await get_similar(finaldata.strCategory);
+            let similar_food = await get_similar(finaldata.strCategory,finaldata.strArea);
             // res.send(similar_food);
             res.render("meal_detail",{meal_details:finaldata,ingrediant_list:ingrediant,similar_item:similar_food})
         });
